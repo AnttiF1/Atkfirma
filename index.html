@@ -144,6 +144,7 @@
             transform-style: preserve-3d;
             perspective: 800px;
             user-select: none;
+            margin-bottom: 4rem;
         }
 
         .btn-contact:hover {
@@ -172,11 +173,61 @@
             }
         }
 
+        section {
+            max-width: 700px;
+            margin: 3rem auto;
+            color: #f4f1de;
+            text-align: left;
+        }
+
+        section h3 {
+            color: #e9c46a;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        section ul {
+            list-style: none;
+            padding-left: 0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        section a {
+            color: #f4a261;
+            text-decoration: none;
+        }
+
+        section a:hover {
+            text-decoration: underline;
+        }
+
+        #social-media {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        #social-media a {
+            margin: 0 10px;
+            color: #f4a261;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+
+        #social-media a:hover {
+            color: #e9c46a;
+        }
+
         footer {
             margin-top: auto;
             font-size: 0.9rem;
             color: #a8dadc;
             padding: 1rem 0 2rem;
+            text-align: center;
         }
 
         /* Modal styles */
@@ -285,6 +336,31 @@
         </p>
 
         <a href="mailto:info@atkfirma.fi" class="btn-contact" id="contactBtn">Ota yhteyttä</a>
+
+        <!-- Lisätyt osiot aloittavat tästä -->
+        <section id="info">
+          <h3>Yrityksemme arvot</h3>
+          <ul>
+            <li>✔️ Laatu ja luotettavuus</li>
+            <li>✔️ Asiakaslähtöisyys</li>
+            <li>✔️ Innovaatio ja kehitys</li>
+            <li>✔️ Ympäristövastuu</li>
+          </ul>
+        </section>
+
+        <section id="contact-info">
+          <h3>Yhteystiedot</h3>
+          <p>📞 Puhelin: <a href="tel:+358401234567">+358 40 123 4567</a></p>
+          <p>✉️ Sähköposti: <a href="mailto:info@atkfirma.fi">info@atkfirma.fi</a></p>
+          <p>📍 Osoite: Esimerkkikatu 12, 00100 Helsinki</p>
+        </section>
+
+        <section id="social-media">
+          <h3>Seuraa meitä</h3>
+          <a href="https://www.facebook.com/atkfirma" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+          <a href="https://www.linkedin.com/company/atkfirma" target="_blank" rel="noopener" aria-label="LinkedIn">🔗</a>
+          <a href="https://twitter.com/atkfirma" target="_blank" rel="noopener" aria-label="Twitter">🐦</a>
+        </section>
     </main>
 
     <footer>
@@ -386,17 +462,10 @@
 
         // Takaisin ylös -nappi logiikka
         const scrollBtn = document.getElementById('scrollTopBtn');
-        window.addEventListener('scroll', () => {
-            if(window.scrollY > 300) {
-                scrollBtn.style.display = 'block';
-            } else {
-                scrollBtn.style.display = 'none';
-            }
-        });
-
-        scrollBtn.addEventListener('click', () => {
+        window.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
 </html>
+
