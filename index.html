@@ -7,100 +7,268 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-        /* --- (Jätin alkuperäisen CSS:n sellaisenaan pois täältä tilan säästämiseksi, voit liittää oman CSS:n) --- */
-
-        /* Uudet lisäykset */
-
-        main {
-            max-width: 900px;
-            margin: 0 auto 4rem;
-            padding: 0 1rem;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        section {
-            margin-bottom: 3rem;
-            background: rgba(255 255 255 / 0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #2a9d8f, #264653);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             color: #fff;
-            text-align: left;
-        }
-
-        section h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #e9c46a;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        }
-
-        ul.services-list {
-            list-style: inside disc;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Asiakasarvostelut */
-        #testimonials {
-            position: relative;
-            height: 140px;
-            overflow: hidden;
-        }
-
-        #testimonials p {
-            font-style: italic;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0;
-            position: absolute;
-            left: 0; right: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        #testimonials p.active {
-            opacity: 1;
-            position: relative;
-        }
-
-        /* Yhteystiedot */
-        #contact-info {
+            min-height: 200vh; /* pidennetty sivu skrollausta varten */
             display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
+            flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
+            text-align: center;
+            padding: 2rem;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        #contact-info div {
-            flex: 1 1 280px;
-            min-width: 280px;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        #map {
-            width: 100%;
-            height: 200px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        header {
+            margin-bottom: 2rem;
+            perspective: 800px; /* 3D-efektille */
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        header.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Sosiaalisen median ikonit */
-        .social-links {
-            margin-top: 1rem;
-        }
-
-        .social-links a {
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            animation: fadeZoomIn 1.5s ease forwards;
+            opacity: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
             display: inline-block;
-            margin-right: 1rem;
-            color: #e9c46a;
-            font-size: 1.5rem;
-            text-decoration: none;
+            cursor: default;
+        }
+
+        @keyframes fadeZoomIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1:hover {
+            color: #f4a261;
             transition: color 0.3s ease;
         }
 
-        .social-links a:hover {
+        h2 {
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: #e9c46a;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            animation: slideDown 1.5s ease forwards;
+            opacity: 0;
+            animation-delay: 1.2s;
+            transition: color 0.3s ease;
+        }
+        h2:hover {
             color: #f4a261;
+        }
+
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            color: #f4f1de;
+            animation: fadeInSlow 2s ease forwards;
+            opacity: 0;
+            animation-delay: 2.5s;
+            transition: color 0.3s ease;
+        }
+        p:hover {
+            color: #f4a261;
+            cursor: default;
+        }
+
+        @keyframes fadeInSlow {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .btn-contact {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #264653;
+            background-color: #e9c46a;
+            border-radius: 40px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(233, 196, 106, 0.5);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease-out;
+            animation: pulse 2.5s infinite;
+            opacity: 0;
+            animation-fill-mode: forwards;
+            animation-delay: 3.5s;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 800px;
+            user-select: none;
+        }
+
+        .btn-contact:hover {
+            background-color: #f4a261;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.7);
+            animation-play-state: paused;
+        }
+        .btn-contact:active {
+            background-color: #d97f3f;
+            transform: scale(0.95);
+            box-shadow: 0 3px 10px rgba(217, 127, 63, 0.7);
+            transition: background-color 0.1s ease, transform 0.1s ease;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(233, 196, 106, 0.5);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 25px rgba(233, 196, 106, 0.8);
+                opacity: 0.9;
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            font-size: 0.9rem;
+            color: #a8dadc;
+            padding: 1rem 0 2rem;
+        }
+
+        /* Modal styles */
+        .modal-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 9999;
+        }
+
+        .modal-bg.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal {
+            background: #264653;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.8);
+            max-width: 400px;
+            text-align: center;
+            color: #e9c46a;
+            position: relative;
+            font-size: 1.2rem;
+            user-select: none;
+        }
+
+        .modal button.close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: transparent;
+            border: none;
+            font-size: 1.4rem;
+            color: #e9c46a;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal button.close-btn:hover {
+            color: #f4a261;
+        }
+
+        /* Takaisin ylös -nappi */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #e9c46a;
+            color: #264653;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(233, 196, 106, 0.5);
+            display: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 10000;
+            user-select: none;
+        }
+        #scrollTopBtn:hover {
+            background-color: #f4a261;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .modal {
+                padding: 1.5rem 2rem;
+                font-size: 1rem;
+            }
+            #scrollTopBtn {
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -117,39 +285,6 @@
         </p>
 
         <a href="mailto:info@atkfirma.fi" class="btn-contact" id="contactBtn">Ota yhteyttä</a>
-
-        <section id="services">
-            <h3>Palvelumme</h3>
-            <ul class="services-list">
-                <li>IT-konsultointi ja järjestelmäsuunnittelu</li>
-                <li>Ohjelmistokehitys räätälöityihin tarpeisiin</li>
-                <li>Pilvipalvelut ja tietoturvaratkaisut</li>
-                <li>Yrityksen digitalisaatio ja automaatio</li>
-                <li>Jatkuva tuki ja ylläpito</li>
-            </ul>
-        </section>
-
-        <section id="testimonials">
-            <h3>Asiakasarvostelut</h3>
-            <p class="active">"ATKFIRMA OY auttoi meitä uudistamaan IT-infrastruktuurimme – erinomaista palvelua!" – Mika K.</p>
-            <p>"Luotettavaa, nopeaa ja ammattitaitoista. Suosittelemme lämpimästi." – Liisa T.</p>
-            <p>"Innovatiiviset ratkaisut todella tekivät eron meidän liiketoiminnalle." – Jari M.</p>
-        </section>
-
-        <section id="contact-info">
-            <div>
-                <h3>Yhteystiedot</h3>
-                <p>ATKFIRMA OY<br>
-                Kauppakatu 12, 00100 Helsinki<br>
-                Puhelin: 09 123 4567<br>
-                Sähköposti: <a href="mailto:info@atkfirma.fi" style="color:#e9c46a;">info@atkfirma.fi</a></p>
-                <div class="social-links" aria-label="Sosiaalisen median linkit">
-                    <a href="https://www.facebook.com/atkfirma" target="_blank" rel="noopener" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M22 12c0-5.514-4.486-10-10-10S2 6.486 2 12c0 5.013 3.675 9.164 8.438 9.877v-6.987h-2.54v-2.89h2.54v-2.204c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.772-1.63 1.562v1.877h2.773l-.443 2.89h-2.33v6.987C18.325 21.164 22 17.013 22 12z"/></svg></a>
-                    <a href="https://www.linkedin.com/company/atkfirma" target="_blank" rel="noopener" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.1 8.87h4.76v12.13H.1V8.87zM8.5 8.87h4.57v1.67h.06c.64-1.21 2.21-2.48 4.56-2.48 4.88 0 5.78 3.21 5.78 7.39v8.55h-4.76v-7.57c0-1.8-.03-4.11-2.5-4.11-2.5 0-2.88 1.95-2.88 3.96v7.72h-4.77V8.87z"/></svg></a>
-                </div>
-            </div>
-            <div id="map" aria-label="Kartta ATKFIRMA OY:n sijainnista"></div>
-        </section>
     </main>
 
     <footer>
@@ -169,8 +304,6 @@
     <button id="scrollTopBtn" aria-label="Palaa sivun alkuun">&#8679;</button>
 
     <script>
-        /* --- alkuperäinen skripti pysyy --- */
-
         // Hiiren liike -efekti otsikolle
         const title = document.getElementById('title');
         title.addEventListener('mousemove', e => {
@@ -264,24 +397,6 @@
         scrollBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-
-        // Asiakasarvostelut vaihtuvat
-        const testimonials = document.querySelectorAll('#testimonials p');
-        let currentTestimonial = 0;
-
-        setInterval(() => {
-            testimonials[currentTestimonial].classList.remove('active');
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            testimonials[currentTestimonial].classList.add('active');
-        }, 5000);
-
-        // Kartta (Google Maps iframe)
-        const mapDiv = document.getElementById('map');
-        mapDiv.innerHTML = `<iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1983.5421908189978!2d24.935450816100842!3d60.16853768199044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46920a3b4e4a44a7%3A0xdba0b9c9f7f2e9a6!2sKauppakatu%2012%2C%2000100%20Helsinki!5e0!3m2!1sfi!2sfi!4v1693565271715!5m2!1sfi!2sfi"
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>`;
-
     </script>
 </body>
 </html>
