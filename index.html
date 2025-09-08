@@ -7,11 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -19,7 +15,7 @@
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             color: #fff;
-            min-height: 200vh; /* pidennetty sivu skrollausta varten */
+            min-height: 200vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -38,50 +34,30 @@
 
         header {
             margin-bottom: 2rem;
-            perspective: 800px; /* 3D-efektille */
+            perspective: 800px;
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        header.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        header.visible { opacity: 1; transform: translateY(0); }
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        header img {
+            max-width: 250px;
+            height: auto;
             animation: fadeZoomIn 1.5s ease forwards;
             opacity: 0;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-            display: inline-block;
-            cursor: default;
         }
 
         @keyframes fadeZoomIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        h1:hover {
-            color: #f4a261;
-            transition: color 0.3s ease;
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         h2 {
             font-weight: 400;
             font-size: 1.5rem;
             color: #e9c46a;
+            margin-top: 1rem;
             margin-bottom: 2rem;
             text-shadow: 0 1px 5px rgba(0,0,0,0.3);
             animation: slideDown 1.5s ease forwards;
@@ -89,19 +65,11 @@
             animation-delay: 1.2s;
             transition: color 0.3s ease;
         }
-        h2:hover {
-            color: #f4a261;
-        }
+        h2:hover { color: #f4a261; }
 
         @keyframes slideDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         p {
@@ -115,15 +83,9 @@
             animation-delay: 2.5s;
             transition: color 0.3s ease;
         }
-        p:hover {
-            color: #f4a261;
-            cursor: default;
-        }
+        p:hover { color: #f4a261; cursor: default; }
 
-        @keyframes fadeInSlow {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
+        @keyframes fadeInSlow { 0% { opacity: 0; } 100% { opacity: 1; } }
 
         .btn-contact {
             display: inline-block;
@@ -146,108 +108,36 @@
             user-select: none;
             margin-bottom: 4rem;
         }
-
-        .btn-contact:hover {
-            background-color: #f4a261;
-            color: #fff;
-            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.7);
-            animation-play-state: paused;
-        }
-        .btn-contact:active {
-            background-color: #d97f3f;
-            transform: scale(0.95);
-            box-shadow: 0 3px 10px rgba(217, 127, 63, 0.7);
-            transition: background-color 0.1s ease, transform 0.1s ease;
-        }
+        .btn-contact:hover { background-color: #f4a261; color: #fff; box-shadow: 0 6px 20px rgba(244, 162, 97, 0.7); animation-play-state: paused; }
+        .btn-contact:active { background-color: #d97f3f; transform: scale(0.95); box-shadow: 0 3px 10px rgba(217, 127, 63, 0.7); transition: background-color 0.1s ease, transform 0.1s ease; }
 
         @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 4px 15px rgba(233, 196, 106, 0.5);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 6px 25px rgba(233, 196, 106, 0.8);
-                opacity: 0.9;
-            }
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(233, 196, 106, 0.5); opacity: 1; }
+            50% { transform: scale(1.05); box-shadow: 0 6px 25px rgba(233, 196, 106, 0.8); opacity: 0.9; }
         }
 
-        section {
-            max-width: 700px;
-            margin: 3rem auto;
-            color: #f4f1de;
-            text-align: left;
-        }
+        section { max-width: 700px; margin: 3rem auto; color: #f4f1de; text-align: left; }
+        section h3 { color: #e9c46a; margin-bottom: 1rem; font-size: 1.8rem; }
+        section ul { list-style: none; padding-left: 0; font-size: 1.1rem; line-height: 1.5; }
+        section ul li { margin-bottom: 0.5rem; }
+        section a { color: #f4a261; text-decoration: none; }
+        section a:hover { text-decoration: underline; }
 
-        section h3 {
-            color: #e9c46a;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
+        #social-media { text-align: center; margin-bottom: 5rem; }
+        #social-media a { margin: 0 10px; color: #f4a261; font-size: 2rem; text-decoration: none; }
+        #social-media a:hover { color: #e9c46a; }
 
-        section ul {
-            list-style: none;
-            padding-left: 0;
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
+        footer { margin-top: auto; font-size: 0.9rem; color: #a8dadc; padding: 1rem 0 2rem; text-align: center; }
 
-        section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        section a {
-            color: #f4a261;
-            text-decoration: none;
-        }
-
-        section a:hover {
-            text-decoration: underline;
-        }
-
-        #social-media {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        #social-media a {
-            margin: 0 10px;
-            color: #f4a261;
-            font-size: 2rem;
-            text-decoration: none;
-        }
-
-        #social-media a:hover {
-            color: #e9c46a;
-        }
-
-        footer {
-            margin-top: auto;
-            font-size: 0.9rem;
-            color: #a8dadc;
-            padding: 1rem 0 2rem;
-            text-align: center;
-        }
-
-        /* Modal styles */
         .modal-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background-color: rgba(0,0,0,0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none;
             transition: opacity 0.3s ease;
             z-index: 9999;
         }
-
-        .modal-bg.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .modal-bg.active { opacity: 1; pointer-events: auto; }
 
         .modal {
             background: #264653;
@@ -263,69 +153,35 @@
         }
 
         .modal button.close-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: transparent;
-            border: none;
-            font-size: 1.4rem;
-            color: #e9c46a;
-            cursor: pointer;
+            position: absolute; top: 12px; right: 12px;
+            background: transparent; border: none;
+            font-size: 1.4rem; color: #e9c46a; cursor: pointer;
             transition: color 0.2s ease;
         }
+        .modal button.close-btn:hover { color: #f4a261; }
 
-        .modal button.close-btn:hover {
-            color: #f4a261;
-        }
-
-        /* Takaisin ylös -nappi */
         #scrollTopBtn {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background-color: #e9c46a;
-            color: #264653;
-            border: none;
-            padding: 0.8rem 1.2rem;
-            border-radius: 50%;
-            font-size: 1.6rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(233, 196, 106, 0.5);
-            display: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            z-index: 10000;
-            user-select: none;
+            position: fixed; bottom: 40px; right: 40px;
+            background-color: #e9c46a; color: #264653;
+            border: none; padding: 0.8rem 1.2rem;
+            border-radius: 50%; font-size: 1.6rem;
+            cursor: pointer; box-shadow: 0 4px 15px rgba(233, 196, 106, 0.5);
+            display: none; transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 10000; user-select: none;
         }
-        #scrollTopBtn:hover {
-            background-color: #f4a261;
-            transform: scale(1.1);
-        }
+        #scrollTopBtn:hover { background-color: #f4a261; transform: scale(1.1); }
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            h2 {
-                font-size: 1.2rem;
-            }
-            p {
-                font-size: 1rem;
-            }
-            .modal {
-                padding: 1.5rem 2rem;
-                font-size: 1rem;
-            }
-            #scrollTopBtn {
-                bottom: 20px;
-                right: 20px;
-                font-size: 1.3rem;
-            }
+            h2 { font-size: 1.2rem; }
+            p { font-size: 1rem; }
+            .modal { padding: 1.5rem 2rem; font-size: 1rem; }
+            #scrollTopBtn { bottom: 20px; right: 20px; font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
     <header id="header">
-        <h1 id="title">ATKFIRMA OY</h1>
+        <img src="Atkfirmalogo.jpg" alt="Atkfirma Oy Logo">
         <h2>Luotettava kumppanisi liiketoiminnassa</h2>
     </header>
 
@@ -337,7 +193,6 @@
 
         <a href="mailto:info@atkfirma.fi" class="btn-contact" id="contactBtn">Ota yhteyttä</a>
 
-        <!-- Lisätyt osiot aloittavat tästä -->
         <section id="info">
           <h3>Yrityksemme arvot</h3>
           <ul>
@@ -367,7 +222,6 @@
         &copy; 2025 ATKFIRMA OY | Kaikki oikeudet pidätetään
     </footer>
 
-    <!-- Modal -->
     <div class="modal-bg" id="modal">
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <button class="close-btn" id="closeModal" aria-label="Sulje modal">&times;</button>
@@ -376,72 +230,31 @@
         </div>
     </div>
 
-    <!-- Takaisin ylös -painike -->
     <button id="scrollTopBtn" aria-label="Palaa sivun alkuun">&#8679;</button>
 
     <script>
-        // Hiiren liike -efekti otsikolle
-        const title = document.getElementById('title');
-        title.addEventListener('mousemove', e => {
-            const rect = title.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * 8;
-            const rotateY = ((x - centerX) / centerX) * 8;
-
-            title.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-        });
-
-        title.addEventListener('mouseleave', () => {
-            title.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-        });
-
-        // Hiiren liike -efekti painikkeelle
         const btn = document.getElementById('contactBtn');
-        btn.addEventListener('mousemove', e => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * 6;
-            const rotateY = ((x - centerX) / centerX) * 6;
-
-            btn.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.1)`;
-        });
-
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-        });
-
-        // Modal avaus ja sulku
         const modal = document.getElementById('modal');
         const closeModalBtn = document.getElementById('closeModal');
+        const header = document.getElementById('header');
+        const scrollBtn = document.getElementById('scrollTopBtn');
 
+        // Modal avaus ja sulku
         btn.addEventListener('click', e => {
             e.preventDefault();
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
-
         closeModalBtn.addEventListener('click', () => {
             modal.classList.remove('active');
             document.body.style.overflow = '';
         });
-
         window.addEventListener('keydown', e => {
             if(e.key === "Escape" && modal.classList.contains('active')) {
                 modal.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
-
         modal.addEventListener('click', e => {
             if(e.target === modal) {
                 modal.classList.remove('active');
@@ -450,7 +263,6 @@
         });
 
         // Scrollausanimaatio headerille
-        const header = document.getElementById('header');
         function checkVisibility() {
             const rect = header.getBoundingClientRect();
             if(rect.top < window.innerHeight && rect.bottom >= 0) {
@@ -461,11 +273,16 @@
         window.addEventListener('load', checkVisibility);
 
         // Takaisin ylös -nappi logiikka
-        const scrollBtn = document.getElementById('scrollTopBtn');
-        window.addEventListener('click', () => {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.style.display = 'block';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        });
+        scrollBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
 </html>
-
